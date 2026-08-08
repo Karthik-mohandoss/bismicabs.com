@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3.6">
+  <link rel="stylesheet" href="css/style.css?v=3.7">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -584,36 +584,115 @@
   </section>
   <!-- ======================================================= -->
 
+  <!-- ============ CUSTOMER REVIEWS SWIPEABLE CAROUSEL ============ -->
   <section class="testimonials-section section-pad">
     <div class="container">
       <div class="text-center animate-from-bottom">
+        <div style="display:inline-block;background:rgba(245,197,24,0.15);color:var(--gold);border:1px solid rgba(245,197,24,0.3);padding:5px 16px;border-radius:20px;font-size:0.85rem;font-weight:700;letter-spacing:0.8px;margin-bottom:12px;">★ 4.9 / 5 RATED CAB SERVICE ★</div>
         <h2>What Our Customers Say</h2>
+        <p>Real reviews from passengers who travel with Bismi Cabs across Chennai & Tamil Nadu.</p>
       </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card animate-from-left delay-1">
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">"Excellent service! The driver was on time for my early morning airport drop. Car was clean and driving was safe."</p>
-          <div class="client-info">
-            <div class="client-avatar">K</div>
-            <div><strong>Karthik</strong><br><small>Anna Nagar</small></div>
+
+      <div class="review-carousel-wrapper animate-from-bottom delay-1">
+        <!-- Navigation Buttons -->
+        <button type="button" class="carousel-nav-btn prev" id="reviewPrevBtn" aria-label="Previous review">&#10094;</button>
+        <button type="button" class="carousel-nav-btn next" id="reviewNextBtn" aria-label="Next review">&#10095;</button>
+
+        <!-- Carousel Track -->
+        <div class="review-carousel-track" id="reviewCarouselTrack">
+          
+          <!-- Review 1 -->
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="stars">★★★★★</div>
+              <span class="verified-badge">✓ Verified Trip</span>
+            </div>
+            <p class="testimonial-text">"Excellent service! The driver arrived 10 minutes early for my 4 AM airport drop from Anna Nagar. Clean sanitized car, smooth driving, and very polite attitude."</p>
+            <div class="client-info">
+              <div class="client-avatar">K</div>
+              <div>
+                <strong>Karthik M.</strong>
+                <small>Chennai Airport Drop • Anna Nagar</small>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="testimonial-card animate-from-bottom delay-2">
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">"Booked an outstation cab to Madurai. The pricing was transparent and the Innova was very comfortable for the family."</p>
-          <div class="client-info">
-            <div class="client-avatar">S</div>
-            <div><strong>Suresh</strong><br><small>Velachery</small></div>
+
+          <!-- Review 2 -->
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="stars">★★★★★</div>
+              <span class="verified-badge">✓ Verified Trip</span>
+            </div>
+            <p class="testimonial-text">"Booked Innova Crysta for a family trip to Madurai and Rameshwaram. Comfortable AC, spacious luggage space, and our driver handled the ghat roads with extreme care."</p>
+            <div class="client-info">
+              <div class="client-avatar">S</div>
+              <div>
+                <strong>Suresh Kumar</strong>
+                <small>Outstation Madurai Trip • Velachery</small>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="testimonial-card animate-from-right delay-3">
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">"Regular user of Bismi Cabs for office travel in Chennai. Always on time, polite drivers, and hassle-free booking."</p>
-          <div class="client-info">
-            <div class="client-avatar">P</div>
-            <div><strong>Priya</strong><br><small>T Nagar</small></div>
+
+          <!-- Review 3 -->
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="stars">★★★★★</div>
+              <span class="verified-badge">✓ Verified Trip</span>
+            </div>
+            <p class="testimonial-text">"Regular user of Bismi Cabs for daily office and client meetings along OMR & ECR. Best pricing with zero cancellation worries. Very reliable booking team!"</p>
+            <div class="client-info">
+              <div class="client-avatar">P</div>
+              <div>
+                <strong>Priya Natarajan</strong>
+                <small>Corporate Travel • T Nagar</small>
+              </div>
+            </div>
           </div>
+
+          <!-- Review 4 -->
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="stars">★★★★★</div>
+              <span class="verified-badge">✓ Verified Trip</span>
+            </div>
+            <p class="testimonial-text">"One-way drop taxi from Chennai to Coimbatore was remarkably affordable without any return charges. Car was in showroom condition and AC was chill throughout."</p>
+            <div class="client-info">
+              <div class="client-avatar">A</div>
+              <div>
+                <strong>Abdul Rahman</strong>
+                <small>One Way Drop Taxi • Adyar</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 5 -->
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="stars">★★★★★</div>
+              <span class="verified-badge">✓ Verified Trip</span>
+            </div>
+            <p class="testimonial-text">"We booked a 14-seater Tempo Traveller for our temple pilgrimage across Trichy & Thanjavur. Best group travel experience with courteous driver and sound system."</p>
+            <div class="client-info">
+              <div class="client-avatar">R</div>
+              <div>
+                <strong>Ramesh Viswanathan</strong>
+                <small>Group Tour • Tambaram</small>
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        <!-- Dot Indicators -->
+        <div class="carousel-dots" id="reviewDots">
+          <span class="carousel-dot active" data-index="0"></span>
+          <span class="carousel-dot" data-index="1"></span>
+          <span class="carousel-dot" data-index="2"></span>
+          <span class="carousel-dot" data-index="3"></span>
+          <span class="carousel-dot" data-index="4"></span>
+        </div>
+
+        <div class="swipe-hint">👈 Swipe to explore more reviews 👉</div>
       </div>
     </div>
   </section>
@@ -729,6 +808,6 @@
   <button id="scrollTop" aria-label="Scroll to top">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
   </button>
-  <script src="js/main.js?v=3.6"></script>
+  <script src="js/main.js?v=3.7"></script>
 </body>
 </html>

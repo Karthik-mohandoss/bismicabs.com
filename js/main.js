@@ -15,23 +15,31 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hamburger && navLinks) {
     hamburger.addEventListener('click', (e) => {
       e.stopPropagation();
+      hamburger.classList.toggle('active');
       navLinks.classList.toggle('active');
-      hamburger.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
       if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+        hamburger.classList.remove('active');
         navLinks.classList.remove('active');
-        hamburger.innerHTML = '☰';
       }
+    });
+
+    // Close menu when clicking any direct nav link
+    navLinks.querySelectorAll('a:not(.dropdown > a)').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
     });
 
     // Dropdown toggle on mobile
     const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(dd => {
       dd.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 992) {
           e.stopPropagation();
           dd.classList.toggle('open');
         }
@@ -192,6 +200,57 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardWidth = getCardWidth();
         const activeIndex = Math.min(Math.round(scrollLeft / cardWidth), fleetDots.length - 1);
         fleetDots.forEach((dot, idx) => {
+          if (idx === activeIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }, 50);
+    }, { passive: true });
+  }
+
+  // Customer Reviews Swipeable Carousel Controller
+  const reviewTrack = document.getElementById('reviewCarouselTrack');
+  const reviewPrevBtn = document.getElementById('reviewPrevBtn');
+  const reviewNextBtn = document.getElementById('reviewNextBtn');
+  const reviewDots = document.querySelectorAll('#reviewDots .carousel-dot');
+
+  if (reviewTrack) {
+    const getReviewCardWidth = () => {
+      const card = reviewTrack.querySelector('.review-card');
+      return card ? card.offsetWidth + 24 : 340;
+    };
+
+    if (reviewPrevBtn) {
+      reviewPrevBtn.addEventListener('click', () => {
+        reviewTrack.scrollBy({ left: -getReviewCardWidth(), behavior: 'smooth' });
+      });
+    }
+
+    if (reviewNextBtn) {
+      reviewNextBtn.addEventListener('click', () => {
+        reviewTrack.scrollBy({ left: getReviewCardWidth(), behavior: 'smooth' });
+      });
+    }
+
+    reviewDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index'), 10);
+        const cardWidth = getReviewCardWidth();
+        reviewTrack.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+      });
+    });
+
+    // Sync active dot indicator on scroll/swipe
+    let reviewScrollTimeout;
+    reviewTrack.addEventListener('scroll', () => {
+      clearTimeout(reviewScrollTimeout);
+      reviewScrollTimeout = setTimeout(() => {
+        const scrollLeft = reviewTrack.scrollLeft;
+        const cardWidth = getReviewCardWidth();
+        const activeIndex = Math.min(Math.round(scrollLeft / cardWidth), reviewDots.length - 1);
+        reviewDots.forEach((dot, idx) => {
           if (idx === activeIndex) {
             dot.classList.add('active');
           } else {
