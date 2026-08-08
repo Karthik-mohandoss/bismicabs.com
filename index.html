@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3.0">
+  <link rel="stylesheet" href="css/style.css?v=3.5">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -336,7 +336,7 @@
             <div class="qr-upi-id">
               <span>UPI ID:</span>
               <strong>laiyathhusen-4@oksbi</strong>
-              <button onclick="navigator.clipboard.writeText('laiyathhusen-4@oksbi').then(()=>this.textContent='Copied!').catch(()=>{})" class="copy-btn" title="Copy UPI ID">📋</button>
+              <button onclick="navigator.clipboard.writeText('laiyathhusen-4@oksbi').then(()=>{this.textContent='✓ Copied'; setTimeout(()=>this.textContent='📋 Copy', 2000);})" class="copy-btn" title="Copy UPI ID">📋 Copy</button>
             </div>
             <p style="font-size:0.82rem;color:var(--text-light);margin-top:8px;">Scan to pay with any UPI app</p>
           </div>
@@ -640,6 +640,6 @@
   <button id="scrollTop" aria-label="Scroll to top">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
   </button>
-  <script src="js/main.js?v=3.0"></script>
+  <script src="js/main.js?v=3.5"></script>
 </body>
 </html>
