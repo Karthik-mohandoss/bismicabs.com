@@ -66,13 +66,13 @@ header .container { display: flex; justify-content: space-between; align-items: 
 /* Centered Hero Stats Bar across 2 columns */
 .hero-stats-center-bar {
   margin-top: 35px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(245, 197, 24, 0.35);
+  background: rgba(10, 46, 20, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(245, 197, 24, 0.3);
   border-radius: 18px;
-  padding: 20px 25px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  padding: 22px 25px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .hero-stats-grid {
@@ -98,12 +98,7 @@ header .container { display: flex; justify-content: space-between; align-items: 
   top: 15%;
   height: 70%;
   width: 1px;
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.hero-stats-grid .stat-icon {
-  font-size: 1.3rem;
-  margin-bottom: 2px;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .hero-stats-grid .stat-num-wrap {
@@ -114,11 +109,9 @@ header .container { display: flex; justify-content: space-between; align-items: 
 }
 
 .hero-stats-grid .stat-num {
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #ffffff, var(--gold-light), var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--gold);
   line-height: 1.1;
   font-family: 'Poppins', sans-serif;
 }
@@ -126,14 +119,15 @@ header .container { display: flex; justify-content: space-between; align-items: 
 .hero-stats-grid .stat-symbol {
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--gold-light);
 }
 
 .hero-stats-grid .stat-text {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  color: #e2f0e6;
   font-weight: 500;
-  margin-top: 3px;
+  margin-top: 4px;
+  letter-spacing: 0.3px;
 }
 
 .hero-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px; padding: 40px; text-align: center; animation: float 6s ease-in-out infinite; }
@@ -169,14 +163,201 @@ header .container { display: flex; justify-content: space-between; align-items: 
 .why-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(5px); padding: 30px; border-radius: 12px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); }
 .why-card i, .why-card .icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; display: block; }
 
-.fleet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-.fleet-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s ease; }
-.fleet-card:hover { transform: translateY(-5px); }
-.fleet-img { width: 100%; height: 220px; object-fit: cover; background: var(--gray-light); transition: transform 0.4s ease; }
-.fleet-card:hover .fleet-img { transform: scale(1.04); }
-.fleet-info { padding: 25px; }
-.fleet-info h3 { color: var(--green-dark); margin-bottom: 10px; }
-.fleet-features { display: flex; justify-content: center; gap: 15px; color: var(--text-light); margin-bottom: 20px; font-size: 0.9rem; }
+/* === FLEET SECTION & SWIPEABLE CAROUSEL (NO WHITE BACKGROUND) === */
+.fleet-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 35px;
+}
+
+.fleet-carousel-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 15px 4px 25px;
+  scrollbar-width: none;
+}
+
+.fleet-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.fleet-card {
+  flex: 0 0 calc(33.333% - 16px);
+  min-width: 310px;
+  max-width: 380px;
+  scroll-snap-align: start;
+  background: linear-gradient(155deg, #0d3b1e 0%, #072512 100%);
+  border: 1px solid rgba(245, 197, 24, 0.25);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(10, 46, 20, 0.22);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  color: var(--white);
+}
+
+.fleet-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(10, 46, 20, 0.35);
+  border-color: rgba(245, 197, 24, 0.6);
+}
+
+.fleet-img-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: #061e0d;
+}
+
+.fleet-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.fleet-card:hover .fleet-img {
+  transform: scale(1.06);
+}
+
+.fleet-tag {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(10, 46, 20, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(245, 197, 24, 0.4);
+  color: var(--gold);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.fleet-info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.fleet-info h3 {
+  color: var(--white);
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.fleet-subhead {
+  color: var(--gold);
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.fleet-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.fleet-feat-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  color: #d6e8dc;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fleet-info .btn {
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+  padding: 13px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: block;
+}
+
+/* Carousel Nav Buttons */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--green-dark);
+  border: 1px solid var(--gray-light);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 1.2rem;
+  transition: all 0.25s ease;
+}
+
+.carousel-nav-btn:hover {
+  background: var(--gold);
+  color: var(--green-dark);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-nav-btn.prev {
+  left: -20px;
+}
+
+.carousel-nav-btn.next {
+  right: -20px;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+  width: 28px;
+  border-radius: 10px;
+  background: var(--green-main);
+}
+
+.swipe-hint {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 10px;
+  display: none;
+}
+
 
 .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 40px; }
 .location-card { background: var(--white); padding: 15px; border-radius: 8px; text-align: center; font-weight: 500; border: 1px solid var(--gray-light); transition: all 0.3s ease; }
@@ -599,19 +780,9 @@ footer { background: var(--green-dark); color: var(--white); padding: 80px 0 0; 
     padding: 0 16px;
   }
 
-  /* Sleek Mobile Top Bar */
+  /* Hide Top Bar on Mobile View as requested */
   .top-bar {
-    padding: 6px 0;
-    font-size: 0.8rem;
-  }
-  .top-bar .container {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5px;
-  }
-  .top-bar-item:nth-child(2) {
-    display: none; /* Hide email on small screens to keep topbar 1-line */
+    display: none !important;
   }
 
   /* Mobile Navigation Drawer */
@@ -718,7 +889,7 @@ footer { background: var(--green-dark); color: var(--white); padding: 80px 0 0; 
 
   /* Mobile Hero Section */
   .hero {
-    padding: 40px 0 35px;
+    padding: 35px 0 30px;
   }
   .hero-content {
     grid-template-columns: 1fr;
@@ -774,7 +945,7 @@ footer { background: var(--green-dark); color: var(--white); padding: 80px 0 0; 
   /* Hero Stats Center Bar - 2x2 Clean Mobile Grid */
   .hero-stats-center-bar {
     margin-top: 25px;
-    padding: 14px 10px;
+    padding: 16px 12px;
     border-radius: 16px;
   }
   .hero-stats-grid {
@@ -790,12 +961,8 @@ footer { background: var(--green-dark); color: var(--white); padding: 80px 0 0; 
   .hero-stats-grid .stat-item:not(:last-child)::after {
     display: none; /* Hide vertical dividers on 2x2 grid */
   }
-  .hero-stats-grid .stat-icon {
-    font-size: 1.2rem;
-    margin-bottom: 2px;
-  }
   .hero-stats-grid .stat-num {
-    font-size: 1.6rem;
+    font-size: 1.65rem;
   }
   .hero-stats-grid .stat-symbol {
     font-size: 1.25rem;
@@ -873,34 +1040,44 @@ footer { background: var(--green-dark); color: var(--white); padding: 80px 0 0; 
     margin-bottom: 14px;
   }
 
-  /* Fleet Grid on Mobile */
-  .fleet-grid {
-    grid-template-columns: 1fr;
-    gap: 22px;
-    margin-top: 25px;
+  /* Fleet Swipeable Carousel on Mobile */
+  .fleet-carousel-track {
+    padding: 10px 8px 20px;
+    gap: 16px;
   }
   .fleet-card {
+    flex: 0 0 84%;
+    min-width: 275px;
+    max-width: 320px;
+    scroll-snap-align: center;
     border-radius: 16px;
   }
-  .fleet-img {
+  .fleet-img-wrap {
     height: 190px;
   }
   .fleet-info {
-    padding: 20px 16px;
+    padding: 18px 16px;
   }
   .fleet-info h3 {
-    font-size: 1.3rem;
-    margin-bottom: 8px;
+    font-size: 1.2rem;
+  }
+  .fleet-subhead {
+    font-size: 0.82rem;
+    margin-bottom: 12px;
   }
   .fleet-features {
-    gap: 8px;
-    flex-wrap: wrap;
+    gap: 6px;
     margin-bottom: 16px;
   }
-  .fleet-info .btn {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
+  .fleet-feat-pill {
+    padding: 5px 10px;
+    font-size: 0.78rem;
+  }
+  .carousel-nav-btn {
+    display: none; /* Mobile uses natural finger swipe */
+  }
+  .swipe-hint {
+    display: block;
   }
 
   /* Advance Booking Section on Mobile */

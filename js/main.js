@@ -150,4 +150,56 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.2 });
 
   counters.forEach(counter => counterObserver.observe(counter));
+
+  // Fleet Swipeable Carousel Controller
+  const fleetTrack = document.getElementById('fleetTrack');
+  const fleetPrevBtn = document.getElementById('fleetPrevBtn');
+  const fleetNextBtn = document.getElementById('fleetNextBtn');
+  const fleetDots = document.querySelectorAll('#fleetDots .carousel-dot');
+
+  if (fleetTrack) {
+    const getCardWidth = () => {
+      const card = fleetTrack.querySelector('.fleet-card');
+      return card ? card.offsetWidth + 24 : 320;
+    };
+
+    if (fleetPrevBtn) {
+      fleetPrevBtn.addEventListener('click', () => {
+        fleetTrack.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+      });
+    }
+
+    if (fleetNextBtn) {
+      fleetNextBtn.addEventListener('click', () => {
+        fleetTrack.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+      });
+    }
+
+    fleetDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index'), 10);
+        const cardWidth = getCardWidth();
+        fleetTrack.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+      });
+    });
+
+    // Sync active dot indicator on scroll/swipe
+    let scrollTimeout;
+    fleetTrack.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const scrollLeft = fleetTrack.scrollLeft;
+        const cardWidth = getCardWidth();
+        const activeIndex = Math.min(Math.round(scrollLeft / cardWidth), fleetDots.length - 1);
+        fleetDots.forEach((dot, idx) => {
+          if (idx === activeIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }, 50);
+    }, { passive: true });
+  }
 });
+

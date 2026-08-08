@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3.5">
+  <link rel="stylesheet" href="css/style.css?v=3.6">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -130,11 +130,10 @@
         </div>
       </div>
 
-      <!-- Centered Stats Bar across both columns -->
+           <!-- Centered Stats Bar across both columns -->
       <div class="hero-stats-center-bar animate-from-bottom delay-3">
         <div class="hero-stats-grid">
           <div class="stat-item">
-            <div class="stat-icon">👥</div>
             <div class="stat-num-wrap">
               <span class="stat-num" data-count="5000">0</span>
               <span class="stat-symbol">+</span>
@@ -142,7 +141,6 @@
             <span class="stat-text">Happy Customers</span>
           </div>
           <div class="stat-item">
-            <div class="stat-icon">🏆</div>
             <div class="stat-num-wrap">
               <span class="stat-num" data-count="20">0</span>
               <span class="stat-symbol">+</span>
@@ -150,7 +148,6 @@
             <span class="stat-text">Yrs Experience</span>
           </div>
           <div class="stat-item">
-            <div class="stat-icon">🗺️</div>
             <div class="stat-num-wrap">
               <span class="stat-num" data-count="50">0</span>
               <span class="stat-symbol">+</span>
@@ -158,12 +155,11 @@
             <span class="stat-text">Routes Covered</span>
           </div>
           <div class="stat-item">
-            <div class="stat-icon">⭐</div>
             <div class="stat-num-wrap">
               <span class="stat-num" data-count="4.9" data-decimal="true">0.0</span>
               <span class="stat-symbol">★</span>
             </div>
-            <span class="stat-text">350+ Google Reviews</span>
+            <span class="stat-text">Customer Rating</span>
           </div>
         </div>
       </div>
@@ -276,36 +272,129 @@
     </div>
   </section>
 
-  <section class="section-pad container">
+  <!-- ============ OUR FLEET SECTION (5 VEHICLES + SWIPEABLE CAROUSEL) ============ -->
+  <section class="section-pad container" id="fleetSection">
     <div class="text-center animate-from-bottom">
-      <h2>Our Fleet</h2>
-      <p>Choose the perfect vehicle for your journey</p>
+      <span style="background:var(--green-main);color:#fff;padding:6px 18px;border-radius:20px;font-size:0.85rem;font-weight:600;letter-spacing:0.5px;">PREMIUM FLEET</span>
+      <h2 style="margin-top:14px;font-size:2.2rem;">Choose Your Perfect Ride</h2>
+      <p style="color:var(--text-light);max-width:550px;margin:8px auto 0;">Explore our 5 categories of verified, sanitized & AC vehicles for every budget and group size</p>
     </div>
-    <div class="fleet-grid">
-      <div class="fleet-card animate-from-left delay-1">
-        <img src="images/sedan.jpg" alt="Sedan Cab - Toyota Etios / Swift Dzire" class="fleet-img">
-        <div class="fleet-info">
-          <h3>Sedan — Toyota Etios / Swift Dzire</h3>
-          <div class="fleet-features"><span>👤 4 Seats</span><span>❄️ AC</span><span>🧳 Boot Space</span></div>
-          <a href="https://wa.me/919500344749?text=Hi+Bismi+Cabs!+I+want+to+book+a+Sedan" class="btn btn-primary">Book Sedan</a>
+
+    <div class="fleet-carousel-wrapper animate-from-bottom delay-1">
+      <button class="carousel-nav-btn prev" id="fleetPrevBtn" aria-label="Previous Vehicle">‹</button>
+      
+      <div class="fleet-carousel-track" id="fleetTrack">
+        <!-- Vehicle 1: Sedan -->
+        <div class="fleet-card">
+          <div class="fleet-img-wrap">
+            <img src="images/sedan.jpg" alt="Sedan Cab - Swift Dzire / Toyota Etios" class="fleet-img" loading="lazy">
+            <span class="fleet-tag">Economical & Fast</span>
+          </div>
+          <div class="fleet-info">
+            <div>
+              <h3>Sedan (Dzire / Etios)</h3>
+              <div class="fleet-subhead">Perfect for 1-4 Passengers</div>
+              <div class="fleet-features">
+                <span class="fleet-feat-pill">👤 4 Seats</span>
+                <span class="fleet-feat-pill">❄️ AC</span>
+                <span class="fleet-feat-pill">🧳 2 Large Bags</span>
+              </div>
+            </div>
+            <a href="https://wa.me/919500344749?text=Hi+Bismi+Cabs!+I+want+to+book+a+Sedan+(Dzire/Etios)" class="btn btn-gold">Book Sedan</a>
+          </div>
+        </div>
+
+        <!-- Vehicle 2: Maruti Ertiga -->
+        <div class="fleet-card">
+          <div class="fleet-img-wrap">
+            <img src="images/ertiga.jpg" alt="Maruti Ertiga 6 Seater Cab" class="fleet-img" loading="lazy">
+            <span class="fleet-tag">Family Favorite</span>
+          </div>
+          <div class="fleet-info">
+            <div>
+              <h3>SUV — Maruti Ertiga</h3>
+              <div class="fleet-subhead">6 Seater Family SUV</div>
+              <div class="fleet-features">
+                <span class="fleet-feat-pill">👤 6 Seats</span>
+                <span class="fleet-feat-pill">❄️ Dual AC</span>
+                <span class="fleet-feat-pill">🧳 3 Bags</span>
+              </div>
+            </div>
+            <a href="https://wa.me/919500344749?text=Hi+Bismi+Cabs!+I+want+to+book+an+Ertiga+SUV" class="btn btn-gold">Book Ertiga</a>
+          </div>
+        </div>
+
+        <!-- Vehicle 3: Toyota Innova -->
+        <div class="fleet-card">
+          <div class="fleet-img-wrap">
+            <img src="images/innova.jpg" alt="Toyota Innova Cab" class="fleet-img" loading="lazy">
+            <span class="fleet-tag">Outstation King</span>
+          </div>
+          <div class="fleet-info">
+            <div>
+              <h3>SUV — Toyota Innova</h3>
+              <div class="fleet-subhead">7 Seater Spacious Ride</div>
+              <div class="fleet-features">
+                <span class="fleet-feat-pill">👤 7 Seats</span>
+                <span class="fleet-feat-pill">❄️ Dual AC</span>
+                <span class="fleet-feat-pill">🧳 4 Bags</span>
+              </div>
+            </div>
+            <a href="https://wa.me/919500344749?text=Hi+Bismi+Cabs!+I+want+to+book+a+Toyota+Innova" class="btn btn-gold">Book Innova</a>
+          </div>
+        </div>
+
+        <!-- Vehicle 4: Toyota Innova Crysta -->
+        <div class="fleet-card">
+          <div class="fleet-img-wrap">
+            <img src="images/crysta.jpg" alt="Toyota Innova Crysta Luxury Cab" class="fleet-img" loading="lazy">
+            <span class="fleet-tag">Executive Luxury</span>
+          </div>
+          <div class="fleet-info">
+            <div>
+              <h3>Innova Crysta Luxury</h3>
+              <div class="fleet-subhead">Premium VIP Captain Seats</div>
+              <div class="fleet-features">
+                <span class="fleet-feat-pill">👤 7/8 Seats</span>
+                <span class="fleet-feat-pill">💺 Captain Seats</span>
+                <span class="fleet-feat-pill">❄️ Climate AC</span>
+              </div>
+            </div>
+            <a href="https://wa.me/919500344749?text=Hi+Bismi+Cabs!+I+want+to+book+an+Innova+Crysta" class="btn btn-gold">Book Crysta</a>
+          </div>
+        </div>
+
+        <!-- Vehicle 5: Tempo Traveller -->
+        <div class="fleet-card">
+          <div class="fleet-img-wrap">
+            <img src="images/tempo.jpg" alt="Tempo Traveller Group Cab" class="fleet-img" loading="lazy">
+            <span class="fleet-tag">Group Special</span>
+          </div>
+          <div class="fleet-info">
+            <div>
+              <h3>Tempo Traveller (12-17 Seater)</h3>
+              <div class="fleet-subhead">Ideal for Large Tours & Pilgrimages</div>
+              <div class="fleet-features">
+                <span class="fleet-feat-pill">👤 12-17 Seats</span>
+                <span class="fleet-feat-pill">💺 Pushback Seats</span>
+                <span class="fleet-feat-pill">❄️ High AC</span>
+              </div>
+            </div>
+            <a href="https://wa.me/919500344749?text=Hi+Bismi+Cabs!+I+want+to+book+a+Tempo+Traveller" class="btn btn-gold">Book Tempo</a>
+          </div>
         </div>
       </div>
-      <div class="fleet-card animate-from-bottom delay-2">
-        <img src="images/innova.jpg" alt="Innova Crysta SUV Cab" class="fleet-img">
-        <div class="fleet-info">
-          <h3>SUV — Toyota Innova Crysta</h3>
-          <div class="fleet-features"><span>👤 6-7 Seats</span><span>❄️ AC</span><span>🧳 Large Boot</span></div>
-          <a href="https://wa.me/919500344749?text=Hi+Bismi+Cabs!+I+want+to+book+an+Innova+Crysta" class="btn btn-primary">Book Innova</a>
-        </div>
+
+      <button class="carousel-nav-btn next" id="fleetNextBtn" aria-label="Next Vehicle">›</button>
+
+      <div class="carousel-dots" id="fleetDots">
+        <span class="carousel-dot active" data-index="0"></span>
+        <span class="carousel-dot" data-index="1"></span>
+        <span class="carousel-dot" data-index="2"></span>
+        <span class="carousel-dot" data-index="3"></span>
+        <span class="carousel-dot" data-index="4"></span>
       </div>
-      <div class="fleet-card animate-from-right delay-3">
-        <img src="images/tempo.jpg" alt="Tempo Traveller Group Cab" class="fleet-img">
-        <div class="fleet-info">
-          <h3>Tempo Traveller — 12 Seater</h3>
-          <div class="fleet-features"><span>👤 12-14 Seats</span><span>❄️ AC</span><span>👨‍👩‍👧‍👦 Group</span></div>
-          <a href="https://wa.me/919500344749?text=Hi+Bismi+Cabs!+I+want+to+book+a+Tempo+Traveller" class="btn btn-primary">Book Tempo</a>
-        </div>
-      </div>
+      <div class="swipe-hint">👈 Swipe to explore all 5 vehicles 👉</div>
     </div>
   </section>
 
@@ -640,6 +729,6 @@
   <button id="scrollTop" aria-label="Scroll to top">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
   </button>
-  <script src="js/main.js?v=3.5"></script>
+  <script src="js/main.js?v=3.6"></script>
 </body>
 </html>
