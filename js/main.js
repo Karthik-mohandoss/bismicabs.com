@@ -43,18 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Animate on Scroll
+  // Rich Animate on Scroll Observer
+  const animElements = document.querySelectorAll('.animate-on-scroll, .animate-from-left, .animate-from-right, .animate-from-bottom, .animate-scale-in, .animate-pop');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.animate-on-scroll').forEach(el => {
-    observer.observe(el);
-  });
+  animElements.forEach(el => observer.observe(el));
 
   // Booking Form
   const bookingForm = document.getElementById('bookingForm');
@@ -92,33 +91,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Counter
+  // Smooth Running Counters (Integers and Decimals)
   const counters = document.querySelectorAll('[data-count]');
-  const speed = 200;
-  
-  const animateCounters = (entries, observer) => {
+  const counterObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const counter = entry.target;
-        const target = +counter.getAttribute('data-count');
-        const updateCount = () => {
-          const count = +counter.innerText;
-          const inc = target / speed;
-          if (count < target) {
-            counter.innerText = Math.ceil(count + inc);
-            setTimeout(updateCount, 10);
+        const el = entry.target;
+        const target = parseFloat(el.getAttribute('data-count'));
+        const isDecimal = el.getAttribute('data-decimal') === 'true' || target % 1 !== 0;
+        const duration = 1800; // ms
+        const startTime = performance.now();
+
+        const updateCounter = (currentTime) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease-out quad function for smooth deceleration
+          const easeOut = 1 - Math.pow(1 - progress, 3);
+          const currentVal = target * easeOut;
+
+          if (isDecimal) {
+            el.innerText = currentVal.toFixed(1);
           } else {
-            counter.innerText = target;
+            el.innerText = Math.floor(currentVal).toLocaleString();
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          } else {
+            el.innerText = isDecimal ? target.toFixed(1) : target.toLocaleString();
           }
         };
-        updateCount();
-        observer.unobserve(counter);
+
+        requestAnimationFrame(updateCounter);
+        obs.unobserve(el);
       }
     });
-  };
+  }, { threshold: 0.2 });
 
-  const counterObserver = new IntersectionObserver(animateCounters, { threshold: 0.5 });
-  counters.forEach(counter => {
-    counterObserver.observe(counter);
-  });
+  counters.forEach(counter => counterObserver.observe(counter));
 });
