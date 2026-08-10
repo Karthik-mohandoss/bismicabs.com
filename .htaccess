@@ -59,7 +59,11 @@ RewriteRule ^cancellation-policy$ /cancellation-policy.html [R=301,L]
 </IfModule>
 
 <IfModule mod_headers.c>
-  # Prevent caching of HTML files so updates are immediate
+  # Prevent caching of all HTML files and root directory pages so updates appear immediately
+  Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate" "expr=%{CONTENT_TYPE} =~ m#text/html#"
+  Header set Pragma "no-cache" "expr=%{CONTENT_TYPE} =~ m#text/html#"
+  Header set Expires "0" "expr=%{CONTENT_TYPE} =~ m#text/html#"
+
   <FilesMatch "\.(html|htm|php)$">
     Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
     Header set Pragma "no-cache"
