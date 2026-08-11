@@ -1,0 +1,28 @@
+# Dependencies and Builds
+node_modules/
+vendor/
+build/
+dist/
+
+# Temp and Cache
+cache/
+temp/
+logs/
+*.log
+.DS_Store
+
+# Secrets and Credentials (DOUBLE GUARDED)
+.env
+.env.*
+wp-config.php
+*-service-account*.json
+google-services.json
+GoogleService-Info.plist
+*secret*
+*apikey*
+*.pem
+*.key
+*.crt
+*.cer
+*.keystore
+*.jks
