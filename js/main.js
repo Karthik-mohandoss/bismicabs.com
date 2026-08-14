@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const date = document.getElementById('travelDate').value;
       const message = `Hello Bismi Cabs, I want to book a taxi.%0AFrom: ${from}%0ATo: ${to}%0ADate: ${date}`;
       if (typeof gtag === 'function') {
-        gtag('event', 'conversion', { 'send_to': 'AW-17946980744/wk6PCMOC6d8cEIjj5O1C', 'value': 1.0, 'currency': 'INR' });
+        gtag('event', 'conversion', { 'send_to': 'AW-17946980744/cExgCKO18N8cEIjj5O1C', 'value': 1.0, 'currency': 'INR' });
       }
       window.open(`https://wa.me/919500344749?text=${message}`, '_blank');
     });
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const msg = document.getElementById('cMessage').value;
       const message = `Hello Bismi Cabs, New Enquiry:%0AName: ${name}%0APhone: ${phone}%0AService: ${service}%0AMessage: ${msg}`;
       if (typeof gtag === 'function') {
-        gtag('event', 'conversion', { 'send_to': 'AW-17946980744/wk6PCMOC6d8cEIjj5O1C', 'value': 1.0, 'currency': 'INR' });
+        gtag('event', 'conversion', { 'send_to': 'AW-17946980744/cExgCKO18N8cEIjj5O1C', 'value': 1.0, 'currency': 'INR' });
       }
       window.open(`https://wa.me/919500344749?text=${message}`, '_blank');
     });
