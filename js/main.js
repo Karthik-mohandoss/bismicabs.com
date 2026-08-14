@@ -93,6 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const to = document.getElementById('toCity').value;
       const date = document.getElementById('travelDate').value;
       const message = `Hello Bismi Cabs, I want to book a taxi.%0AFrom: ${from}%0ATo: ${to}%0ADate: ${date}`;
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', { 'send_to': 'AW-17946980744/wk6PCMOC6d8cEIjj5O1C', 'value': 1.0, 'currency': 'INR' });
+      }
       window.open(`https://wa.me/919500344749?text=${message}`, '_blank');
     });
   }
@@ -107,6 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const service = document.getElementById('cService').value;
       const msg = document.getElementById('cMessage').value;
       const message = `Hello Bismi Cabs, New Enquiry:%0AName: ${name}%0APhone: ${phone}%0AService: ${service}%0AMessage: ${msg}`;
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', { 'send_to': 'AW-17946980744/wk6PCMOC6d8cEIjj5O1C', 'value': 1.0, 'currency': 'INR' });
+      }
       window.open(`https://wa.me/919500344749?text=${message}`, '_blank');
     });
   }
@@ -260,5 +266,42 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 50);
     }, { passive: true });
   }
+
+  // Google Ads Click to Call Conversion Tracking
+  window.gtag_report_conversion = function(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17946980744/wk6PCMOC6d8cEIjj5O1C',
+          'value': 1.0,
+          'currency': 'INR',
+          'event_callback': callback
+      });
+    } else {
+      callback();
+    }
+    return false;
+  };
+
+  // Attach conversion tracking to all phone and WhatsApp links
+  document.querySelectorAll('a[href^="tel:"], a[href^="https://wa.me"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (typeof gtag === 'function' && link.target !== '_blank') {
+        e.preventDefault();
+        window.gtag_report_conversion(link.href);
+      } else if (typeof gtag === 'function' && link.target === '_blank') {
+        // For new tab links, just send the event and don't prevent default
+        gtag('event', 'conversion', {
+            'send_to': 'AW-17946980744/wk6PCMOC6d8cEIjj5O1C',
+            'value': 1.0,
+            'currency': 'INR'
+        });
+      }
+    });
+  });
 });
 
