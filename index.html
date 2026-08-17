@@ -183,6 +183,13 @@
     <div class="booking-strip">
       <form class="booking-form" id="bookingForm">
         <div class="form-group">
+          <label>Trip Type</label>
+          <select id="tripType" class="form-control" required>
+            <option value="One Way">One Way</option>
+            <option value="Round Trip">Round Trip</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label>From</label>
           <input type="text" id="fromCity" class="form-control" placeholder="Pickup City" required>
         </div>
@@ -193,6 +200,16 @@
         <div class="form-group">
           <label>Date</label>
           <input type="date" id="travelDate" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Vehicle</label>
+          <select id="vehicleType" class="form-control" required>
+            <option value="Sedan">Sedan (4 Seats)</option>
+            <option value="Maruti Ertiga">Maruti Ertiga (6 Seats)</option>
+            <option value="Toyota Innova">Toyota Innova (6/7 Seats)</option>
+            <option value="Innova Crysta">Innova Crysta (6/7 Seats)</option>
+            <option value="Tempo Traveller">Tempo Traveller (12-18 Seats)</option>
+          </select>
         </div>
         <button type="submit" class="btn btn-gold" style="margin-top: 20px;">Book Now</button>
       </form>
@@ -1249,6 +1266,6 @@
   <button id="scrollTop" aria-label="Scroll to top">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
   </button>
-  <script src="js/main.js?v=4.7"></script>
+  <script src="js/main.js?v=5.7"></script>
 </body>
 </html>

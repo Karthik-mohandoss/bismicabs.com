@@ -89,10 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (bookingForm) {
     bookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      const tripType = document.getElementById('tripType') ? document.getElementById('tripType').value : 'One Way';
       const from = document.getElementById('fromCity').value;
       const to = document.getElementById('toCity').value;
       const date = document.getElementById('travelDate').value;
-      const message = `Hello Bismi Cabs, I want to book a taxi.%0AFrom: ${from}%0ATo: ${to}%0ADate: ${date}`;
+      const vehicle = document.getElementById('vehicleType') ? document.getElementById('vehicleType').value : 'Not specified';
+      const message = `Hello Bismi Cabs, I want to book a taxi.%0ATrip Type: ${tripType}%0AFrom: ${from}%0ATo: ${to}%0ADate: ${date}%0AVehicle: ${vehicle}`;
       if (typeof gtag === 'function') {
         gtag('event', 'conversion', { 'send_to': 'AW-17946980744/cExgCKO18N8cEIjj5O1C', 'value': 1.0, 'currency': 'INR' });
       }
