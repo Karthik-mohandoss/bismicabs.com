@@ -89,7 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (bookingForm) {
     bookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const tripType = document.getElementById('tripType') ? document.getElementById('tripType').value : 'One Way';
+      const tripTypeElement = document.querySelector('input[name="tripType"]:checked');
+      const tripType = tripTypeElement ? tripTypeElement.value : 'One Way';
       const from = document.getElementById('fromCity').value;
       const to = document.getElementById('toCity').value;
       const date = document.getElementById('travelDate').value;

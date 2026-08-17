@@ -204,6 +204,12 @@ header .container { display: flex; justify-content: space-between; align-items: 
 .form-group label { font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: var(--text-light); }
 .form-control { padding: 12px 15px; border: 1px solid var(--gray-light); border-radius: 8px; font-family: inherit; font-size: 1rem; }
 
+.trip-type-toggle { display: flex; background: #f8fdf9; border-radius: 8px; border: 1px solid var(--gray-light); overflow: hidden; }
+.trip-type-toggle input[type="radio"] { display: none; }
+.trip-type-toggle label { flex: 1; text-align: center; padding: 12px 10px; margin: 0; cursor: pointer; color: var(--text-color); font-weight: 500; font-size: 0.95rem; transition: all 0.3s ease; border-right: 1px solid var(--gray-light); }
+.trip-type-toggle label:last-child { border-right: none; }
+.trip-type-toggle input[type="radio"]:checked + label { background: var(--green-deep); color: var(--white); font-weight: 600; }
+
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
 .service-card {
   background: linear-gradient(145deg, #0d3b1e 0%, #061c0d 100%);
