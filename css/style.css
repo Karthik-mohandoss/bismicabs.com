@@ -194,7 +194,7 @@ header .container { display: flex; justify-content: space-between; align-items: 
 
 /* Hero real image */
 .hero-img-wrap { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); animation: float 6s ease-in-out infinite; }
-.hero-main-img { width: 100%; height: 380px; object-fit: cover; display: block; }
+.hero-main-img { width: 100%; height: auto; max-height: 520px; object-fit: contain; display: block; background: rgba(0,0,0,0.1); }
 .hero-img-badge { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(10,46,20,0.85); backdrop-filter: blur(10px); border: 1px solid rgba(245,197,24,0.4); color: #fff; padding: 12px 24px; border-radius: 50px; display: flex; align-items: center; gap: 12px; white-space: nowrap; font-size: 0.95rem; }
 .hero-img-badge a { font-size: 1.1rem; }
 
