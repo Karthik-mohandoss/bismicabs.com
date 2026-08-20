@@ -1350,7 +1350,9 @@ footer { background: var(--green-dark); color: var(--white); padding: 80px 0 0; 
     border-radius: 16px;
   }
   .hero-main-img {
-    height: 230px;
+    height: auto;
+    max-height: 480px;
+    width: 100%;
   }
   .hero-img-badge {
     bottom: 12px;
