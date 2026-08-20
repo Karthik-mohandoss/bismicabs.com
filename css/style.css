@@ -198,6 +198,26 @@ header .container { display: flex; justify-content: space-between; align-items: 
 .hero-img-badge { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(10,46,20,0.85); backdrop-filter: blur(10px); border: 1px solid rgba(245,197,24,0.4); color: #fff; padding: 12px 24px; border-radius: 50px; display: flex; align-items: center; gap: 12px; white-space: nowrap; font-size: 0.95rem; }
 .hero-img-badge a { font-size: 1.1rem; }
 
+.min-kms-alert {
+  background: rgba(245, 197, 24, 0.15);
+  border: 1px dashed var(--gold);
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.min-kms-alert strong {
+  color: var(--green-dark);
+  font-size: 0.95rem;
+}
+@media (min-width: 768px) {
+  .min-kms-alert { flex-direction: row; gap: 30px; }
+}
 .booking-strip { background: var(--white); padding: 30px 0; box-shadow: 0 -10px 30px rgba(0,0,0,0.05); position: relative; margin-top: -30px; border-radius: 12px; z-index: 10; }
 .booking-form { display: flex; gap: 15px; align-items: center; justify-content: center; flex-wrap: wrap; }
 .form-group { display: flex; flex-direction: column; flex: 1; min-width: 200px; }
